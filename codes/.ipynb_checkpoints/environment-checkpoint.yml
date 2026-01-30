@@ -1,0 +1,29 @@
+name: leo_env
+channels:
+  - pytorch
+  - defaults
+  - anaconda
+dependencies:
+  - pytorch==1.12.1
+  - torchvision==0.13.1
+  - cudatoolkit=10.2
+  - jupyter
+  - ipykernel
+  - pandas
+  - matplotlib
+  - seaborn
+  - scipy
+  - scikit-learn==1.6.1
+  - scikit-image
+  - dask==2025.2.0
+  - tqdm
+  - h5py
+  - pip
+  - pip:
+    - nbdev
+    - segyio
+    - numpy==1.24.4
+    - opencv-python
+    - numba
+    - ipycanvas
+    - ipympl
