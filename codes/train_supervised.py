@@ -40,31 +40,22 @@ boundaries_label_file = 'datasets/boundaries.npy'
 output_dir = 'models'
 output_name = 'experiment_01'
 
-# Sampling strategy
-sampling_method = Ampook  
-# Options: Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential
-
 # Dataset split ratios (train / validation / test)
 train_valid_test_split = [0.05, 0.05, 0.90]
+
+# Sampling strategy
+sampling_method = Ampook # Options: Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential
 
 # K-Fold parameters (used only if sampling_method == KFold)
 n_folds = None
 current_fold = None
 
 # Data configuration
-section_type = 'inline'  
-# Options: inline, crossline, timeslice
+section_type = 'inline' # Options: 'inline', 'crossline', 'timeslice'
 
 # Loss function
-loss_function = FocalLoss()
-# Options:
-# nn.BCEWithLogitsLoss()
-# DistanceTransformLoss
-# combined_boundary_and_dice
-# combined_bce_and_dice
-# combined_bce_and_jaccard
-# FocalLoss()
-# DNFS_combined_bce_and_jaccard
+loss_function = DistanceTransformLoss
+# Options: nn.BCEWithLogitsLoss(), DistanceTransformLoss, combined_boundary_and_dice, combined_bce_and_dice, combined_bce_and_jaccard, FocalLoss(), DNFS_combined_bce_and_jaccard
 
 # Training configuration
 batch_size = 8
@@ -72,7 +63,7 @@ epochs = 500
 patience = 500 # Early stopping patience (the best model is saved, not the last epoch)
 learning_rate = 1e-3
 kernel_size = 3
-model = UNet
+model = DeepLabV3Plus # Options: Unet, ResUnet, DeepLabV3Plus, DNFS, Unet77
 
 ########################################################################
 

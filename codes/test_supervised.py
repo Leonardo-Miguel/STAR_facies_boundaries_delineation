@@ -3,8 +3,6 @@ from nets.ResUNet import ResUnet
 from nets.DeepLab import DeepLabV3Plus
 from nets.DNFSLima2024 import DNFS
 from nets.UNetLiu2024 import Unet77
-from nets.Vit import Vit
-from nets.Segformer import Segformer
 from utils.BoundariesDataset import SeismicSubset, load_subset, normalization
 from utils.BoundariesPrediction import predict_boundaries
 from selection_methods import Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential
@@ -34,25 +32,24 @@ model_file = 'models/experiment_01/complete_model.pth'
 output_dir = 'predictions'
 output_name = 'experiment_01'
 
-# Sampling strategy
-sampling_method = Ampook  
-# Options: Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential
-
 # Dataset split ratios (train / validation / test)
 train_valid_test_split = [0.05, 0.05, 0.90]
+
+# Sampling strategy
+sampling_method = Ampook # Options: Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential
 
 # K-Fold parameters (used only if sampling_method == KFold)
 n_folds = None
 current_fold = None
 
 # Data configuration
-section_type = 'inline'  # or 'crossline'
+section_type = 'inline' # Options: 'inline', 'crossline', 'timeslice'
 batch_size = 16
 
-# Training hyperparameters
+# Hyperparameters (it should be the same as those used in training)
 learning_rate = 1e-3
 kernel_size = 3
-model = UNet
+model = DeepLabV3Plus # Options: Unet, ResUnet, DeepLabV3Plus, DNFS, Unet77
 
 # Output options
 save_predictions = True

@@ -3,8 +3,6 @@ from nets.ResUNet import ResUnet
 from nets.DeepLab import DeepLabV3Plus
 from nets.DNFSLima2024 import DNFS
 from nets.UNetLiu2024 import Unet77
-from nets.Vit import Vit
-from nets.Segformer import Segformer
 from utils.BoundariesDataset import MaskedLabelSubset, load_subset, normalization
 from utils.BoundariesTrain import train_validate
 from utils.Losses import DistanceTransformLoss, combined_boundary_and_dice, combined_bce_and_dice, combined_bce_and_jaccard, FocalLoss, DNFS_combined_bce_and_jaccard
@@ -43,38 +41,30 @@ boundaries_pred_file = 'predictions/boundaries_prediction.npy'
 output_dir = 'models'
 output_name = 'experiment_02'
 
-# Sampling strategy
-sampling_method = EquallySpaced  
-# Options: Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential
-
 # Dataset split ratios (train / validation / test)
 train_valid_test_split = [0.05, 0.05, 0.90]
+
+# Sampling strategy
+sampling_method = Ampook # Options: Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential
 
 # K-Fold parameters (used only if sampling_method == KFold)
 n_folds = None
 current_fold = None
 
 # Data configuration
-section_type = 'inline'  # or 'crossline'
+section_type = 'inline'  # Options: 'inline', 'crossline', 'timeslice'
 
 # Loss function
-loss_function = nn.BCEWithLogitsLoss()
-# Options:
-# nn.BCEWithLogitsLoss()
-# DistanceTransformLoss
-# combined_boundary_and_dice
-# combined_bce_and_dice
-# combined_bce_and_jaccard
-# FocalLoss()
-# DNFS_combined_bce_and_jaccard
+loss_function = DistanceTransformLoss
+# Options: nn.BCEWithLogitsLoss(), DistanceTransformLoss, combined_boundary_and_dice, combined_bce_and_dice, combined_bce_and_jaccard, FocalLoss(), DNFS_combined_bce_and_jaccard
 
-# Training parameters
+# Training configuration
 batch_size = 8
 epochs = 500
 patience = 500  # Early stopping patience (best model is saved, not the last epoch)
 learning_rate = 1e-3
 kernel_size = 3
-model = UNet
+model = DeepLabV3Plus # Options: Unet, ResUnet, DeepLabV3Plus, DNFS, Unet77
 
 ########################################################################
 
