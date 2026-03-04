@@ -55,8 +55,8 @@ current_fold = None
 section_type = 'inline'  # Options: 'inline', 'crossline', 'timeslice'
 
 # Loss function
-loss_function = DistanceTransformLoss
-# Options: nn.BCEWithLogitsLoss(), DistanceTransformLoss, combined_boundary_and_dice, combined_bce_and_dice, combined_bce_and_jaccard, FocalLoss(), DNFS_combined_bce_and_jaccard
+loss_function = DistanceTransformLoss()
+# Options: nn.BCEWithLogitsLoss(), DistanceTransformLoss(), combined_boundary_and_dice, combined_bce_and_dice, combined_bce_and_jaccard, FocalLoss(), DNFS_combined_bce_and_jaccard
 
 # Training configuration
 batch_size = 8
