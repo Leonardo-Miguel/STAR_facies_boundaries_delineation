@@ -50,6 +50,7 @@ def partitions_sampling(data_file:str, section_type:str, train_valid_test_split:
     random.seed(42)
     
     data = np.load(data_file, mmap_mode='r')
+    data = np.nan_to_num(data, nan=np.nanmin(data))
 
     n_poolings = 5
 
@@ -62,8 +63,7 @@ def partitions_sampling(data_file:str, section_type:str, train_valid_test_split:
 
     n_train_samples = int(round(n_samples * train_valid_test_split[0]))
     n_val_samples = int(round(n_samples * train_valid_test_split[1]))
-        
-    # obs: não precisa transpor os inlines
+
     if section_type == 'crossline':
         data = np.transpose(data, (1, 0, 2))
     if section_type == 'timeslice':

@@ -11,7 +11,8 @@ warnings.filterwarnings("ignore")
 def normalization(data:np.array) -> np.array:
 
     print(f'Original data range: [{np.min(data)} , {np.max(data)}]', flush=True)
-    
+
+    data = np.nan_to_num(data, nan=np.nanmin(data)) # substituino nans pelo menor valor global
     mean = np.mean(data)
     std_dev = np.std(data)
     data = (data - mean) / std_dev # standardization

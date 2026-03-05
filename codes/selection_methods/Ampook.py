@@ -85,6 +85,7 @@ def partitions_sampling(data_file:str, section_type:str, train_valid_test_split:
     random.seed(42)
     
     data = np.load(data_file, mmap_mode='r')
+    data = np.nan_to_num(data, nan=np.nanmin(data))
 
     n_poolings = 5
 
@@ -212,4 +213,4 @@ def partitions_sampling(data_file:str, section_type:str, train_valid_test_split:
     samples_test = [i for i in range(n_samples) if i not in samples_train_val]
 
     return sorted(samples_train), sorted(samples_val), sorted(samples_test)
-    
+
