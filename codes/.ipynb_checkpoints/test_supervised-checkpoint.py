@@ -3,6 +3,8 @@ from nets.ResUNet import ResUnet
 from nets.DeepLab import DeepLabV3Plus
 from nets.DNFSLima2024 import DNFS
 from nets.UNetLiu2024 import Unet77
+from nets.Vit import Vit
+from nets.Segformer import Segformer
 from utils.BoundariesDataset import SeismicSubset, load_subset, normalization
 from utils.BoundariesPrediction import predict_boundaries
 from selection_methods import Ampook, EquallySpaced, KFold, Random, SpectralClustering, Sequential

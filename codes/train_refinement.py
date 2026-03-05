@@ -161,6 +161,8 @@ patience: {patience}
 learning_rate: {learning_rate}
 kernel_size: {kernel_size}
 model: {model.__name__}
+train_samples: {train_samples}
+validation_samples: {validation_samples}
 ''', flush=True)
 
     train_data, train_label, train_pred, _ = load_subset(data_file,
