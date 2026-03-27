@@ -4,6 +4,10 @@ This repository contains the implementations of the pipeline proposed in the stu
 
 "STAR: A robust deep learning pipeline for facies boundaries delineation using few labeled samples."
 
+![3D delineation example](3d_predictions.png)
+
+![Section delineation example](section_prediction.png)
+
 <!------------------------------------------------------------------------------------------------->
 
 # Overview
@@ -49,6 +53,8 @@ Autoencoders architectures for refinement:
 
 The [codes](codes) directory contains 4 scripts required to run training, testing, and refinement experiments.
 Each script is self-contained and allows independent configuration of parameters and hyperparameters.
+
+**⚠️ Warning:** Configuration parameters are passed internally at the beginning of each script, immediately after the import statements.
 
 #### `train_supervised.py`
 
